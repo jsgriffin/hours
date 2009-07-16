@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  client_id: 1
+  start: 2009-07-16 17:47:03
+  end: 2009-07-16 17:47:03
+  task: MyText
+
+two:
+  client_id: 1
+  start: 2009-07-16 17:47:03
+  end: 2009-07-16 17:47:03
+  task: MyText
