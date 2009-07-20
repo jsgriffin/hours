@@ -8,6 +8,10 @@
     <%= f.text_field :name %>
   </p>
   <p>
+  	<%= f.label :timezone %><br />
+  	<%= f.time_zone_select :timezone, ActiveSupport::TimeZone.us_zones %>
+  </p>
+  <p>
     <%= f.label :email %><br />
     <%= f.text_field :email %>
   </p>

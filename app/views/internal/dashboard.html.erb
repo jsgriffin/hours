@@ -1,0 +1,64 @@
+<div id="totals">
+	<h2>Totals</h2>
+
+	<% @grand_total = 0 %>
+	
+	<% for client in @clients %>
+		<div class="total">
+			<h3><%= client.name %></h3>
+			<p>Time: <span class="total-time"><%= calculate_total_time( client ).strftime( @time_format ) %></span></p>
+			<p>Earned: <span class="total-amount">&pound;<%= '%.2f' % calculate_total_earnt( client ) %></span></p>
+		</div>
+	<% end %>
+</div>
+
+<% for client in @clients %>
+	<div class="client">
+		<h1 class="client"><%= client.name %> <span class="small">&pound;<%= '%.2f' % client.rate %>/hr</span></h1>
+		
+		<div class="inner">
+			<% @current_date = "" %>
+			<% for interval in client.intervals %>
+				<% if interval.start.strftime( @date_format ) != @current_date %>
+					<p class="interval-date"><%= interval.start.strftime( @date_format ) %></p>
+					<% @current_date = interval.start.strftime( @date_format ) %>
+				<% end %>
+				<p class="entry">
+					<% if interval.end %>
+						<%= time_diff( interval.start, interval.end ).strftime( @time_format ) %> 
+						<span class="small">(<%= interval.start.strftime( @time_format ) %> - <%= interval.end.strftime( @time_format ) %>)</span>
+						<span class="value">&pound;<%= '%.2f' % ((interval.end - interval.start) * (client.rate / (60*60) )) %></span>
+					<% else %>
+						<span class="open-interval">Work in progress... <span id="counter"></span></span>
+						<script type="text/javascript">
+						setInterval('startTimer( <%= interval.start.to_f * 1000 %> );', 1000 )
+						</script>
+					<% end %>
+				</p>
+			<% end %>
+			
+			<% for expense in client.expenses %>
+				<p class="entry"><%= expense.description %> <span class="value">&pound;<%= '%.2f' % expense.amount %></span></p>
+			<% end %>
+	
+			<div class="expense_form">
+				<p class="entry expense-link" id="expense-link-<%= client.id %>"><a href="javascript:showExpenseForm( <%= client.id %> )">+ New expense</a></p>	
+				<% @expense = client.expenses.build %>
+				<% form_for(@expense) do |f| %>			
+				  <p class="entry expense-form" id="expense-form-<%= client.id %>">
+		     		<input type="hidden" name="client_id" value="<%= client.id %>" />
+				    <%= f.text_field :description, :value=>"Description", :class=>"inline" %>
+				    <span class="value_input">&pound;<%= f.text_field :amount, :size=>"5" %></span>
+				    <span class="expense_submit"><%= f.submit 'Create' %></span>
+				  </p>
+				<% end %>
+			</div>
+		</div>
+	</div>
+<% end %>
+
+<p id="client-link" class="client-link"><a href="javascript:showClientForm()">+ New Client</a></p>
+
+<div id="client-form">
+	<%= render :partial=>"client_form" %>
+</div>

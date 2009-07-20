@@ -25,11 +25,10 @@ class ClientsController < ApplicationController
   # GET /clients/new.xml
   def new
     @client = Client.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @client }
-    end
+    end   
   end
 
   # GET /clients/1/edit
@@ -40,17 +39,26 @@ class ClientsController < ApplicationController
   # POST /clients
   # POST /clients.xml
   def create
-    @client = Client.new(params[:client])
+    #@client = Client.new(params[:client])
 
-    respond_to do |format|
-      if @client.save
-        flash[:notice] = 'Client was successfully created.'
-        format.html { redirect_to(@client) }
-        format.xml  { render :xml => @client, :status => :created, :location => @client }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @client.errors, :status => :unprocessable_entity }
-      end
+    #respond_to do |format|
+    #  if @client.save
+    #    flash[:notice] = 'Client was successfully created.'
+    #    format.html { redirect_to(@client) }
+    #    format.xml  { render :xml => @client, :status => :created, :location => @client }
+    #  else
+    #    format.html { render :action => "new" }
+    #    format.xml  { render :xml => @client.errors, :status => :unprocessable_entity }
+    #  end
+    #end
+        
+    @user = get_current_user
+    @client = @user.clients.build( params[:client] )
+    
+    if @client.save 
+    	redirect_to( "/dashboard" )
+    else
+    	render :action=>"new"
     end
   end
 

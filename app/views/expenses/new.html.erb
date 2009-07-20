@@ -5,16 +5,15 @@
 
   <p>
     <%= f.label :description %><br />
-    <%= f.text_area :description %>
+    <%= f.text_field :description %>
   </p>
   <p>
     <%= f.label :amount %><br />
     <%= f.text_field :amount %>
   </p>
-  <p>
-    <%= f.label :client %><br />
-    <%= f.text_field :client %>
-  </p>
+  
+  <%= f.hidden_field :client, :value=>params[:client_id] %>
+    
   <p>
     <%= f.submit 'Create' %>
   </p>

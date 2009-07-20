@@ -5,14 +5,6 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :clients
 
-  map.resources :expenses
-
-  map.resources :intervals
-
-  map.resources :users
-
-  map.resources :clients
-
   map.resources :users
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -59,4 +51,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
+  
+  map.connect 'login/', :controller=>'home', :action=>'login'
+  map.connect 'dashboard/', :controller=>'internal', :action=>'dashboard'
 end

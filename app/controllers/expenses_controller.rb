@@ -40,18 +40,30 @@ class ExpensesController < ApplicationController
   # POST /expenses
   # POST /expenses.xml
   def create
-    @expense = Expense.new(params[:expense])
+    #@expense = Expense.new(params[:expense])
 
-    respond_to do |format|
-      if @expense.save
-        flash[:notice] = 'Expense was successfully created.'
-        format.html { redirect_to(@expense) }
-        format.xml  { render :xml => @expense, :status => :created, :location => @expense }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @expense.errors, :status => :unprocessable_entity }
-      end
+    #respond_to do |format|
+    #  if @expense.save
+    #    flash[:notice] = 'Expense was successfully created.'
+    #    format.html { redirect_to(@expense) }
+    #    format.xml  { render :xml => @expense, :status => :created, :location => @expense }
+    #  else
+    #    format.html { render :action => "new" }
+    #    format.xml  { render :xml => @expense.errors, :status => :unprocessable_entity }
+    #  end
+    #end
+    
+    @client = Client.find( params[:client_id] )
+    
+    @expense = @client.expenses.build( params[:expense] )
+    
+    if @expense.save 
+    	flash[:notice] = "Expense was created successfully"
+    else
+    	flash[:notice] = "Expense could not be saved"
     end
+   	redirect_to "/dashboard"
+    
   end
 
   # PUT /expenses/1

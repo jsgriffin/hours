@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_filter :check_login, :only=>[:index,:show,:edit,:new,:update,:destroy]
+	
   # GET /users
   # GET /users.xml
   def index
@@ -82,4 +84,5 @@ class UsersController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
 end

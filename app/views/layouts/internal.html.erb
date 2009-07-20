@@ -1,0 +1,25 @@
+<html>
+	<head>
+		<title>Hours</title>
+		<link rel="stylesheet" href="/stylesheets/style.css" />
+		<script type="text/javascript" src="/javascripts/prototype.js"></script>
+		<script type="text/javascript" src="/javascripts/application.js"></script>
+	</head>
+
+	<body>
+		<div id="banner">
+			<img src="/images/logo.png" alt="" title="hours" />
+			<div id="timer">
+				<div class="inner">
+					<%= render :partial => "timer" %>
+				</div>
+			</div>
+		</div>
+	
+		<div id="wrapper">
+			<p class="notice"><%= flash[:notice] %></p>
+			<%= yield %>
+		</div>
+	</body>
+
+</html>

@@ -40,18 +40,24 @@ class IntervalsController < ApplicationController
   # POST /intervals
   # POST /intervals.xml
   def create
-    @interval = Interval.new(params[:interval])
-
-    respond_to do |format|
-      if @interval.save
-        flash[:notice] = 'Interval was successfully created.'
-        format.html { redirect_to(@interval) }
-        format.xml  { render :xml => @interval, :status => :created, :location => @interval }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @interval.errors, :status => :unprocessable_entity }
-      end
-    end
+  	if params[:client][:id].empty?
+  		flash[:notice] = 'Please select a client'
+	    redirect_to "/dashboard"
+	    return false
+  	end
+  	
+  	@client = Client.find( params[:client][:id] )
+  	
+  	if params[:int_action] == "start"
+	    @interval = @client.intervals.build
+		@interval.start = Time.zone.now
+	else
+		@interval = Interval.find( :first, :conditions => ["client_id = ? AND end IS NULL", @client.id] )
+		@interval.end = Time.zone.now
+	end
+    
+	@interval.save
+    redirect_to "/dashboard"
   end
 
   # PUT /intervals/1

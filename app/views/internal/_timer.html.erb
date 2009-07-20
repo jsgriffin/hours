@@ -1,0 +1,12 @@
+<% @interval = Interval.new %>
+<% @open_interval = check_open_interval %>
+
+<% form_for(@interval) do |f| %>
+	<% if @open_interval %>
+		<input type="hidden" name="client[id]" value="<%= @open_interval.id %>" /> <input type="hidden" name="int_action" value="stop" />
+		<span class="current"><%= @open_interval.name %></span> <%= f.submit 'Stop' %>
+	<% else %>
+		<input type="hidden" name="int_action" value="start" />
+		<%= collection_select(:client, :id, get_client_list, :id, :name, options ={:prompt => "Clients"}) %> <%= f.submit 'Start' %>
+	<% end %>
+<% end %>

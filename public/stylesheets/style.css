@@ -1,0 +1,177 @@
+body{
+	background: url( '/images/body_bg.jpg' ) repeat-x;
+	font-family: Helvetica, Verdana, Arial, sans-serif;
+}
+
+#banner{
+	width: 1080px;
+	margin: 40px auto 0px auto;	
+}
+
+#wrapper{
+	width: 850px;
+	margin: 50px auto 100px auto;
+}
+
+h1{
+	font-size: 32px;
+	font-weight: bold;
+}
+
+h1 span.small{
+	font-size: 16px;
+	color: #666666;
+	font-weight: normal;
+}
+
+span.small{
+	color: #666666;
+	font-size: 12px;
+}
+
+div.client{
+	margin-bottom: 40px;
+}
+
+div.client div.inner{
+	margin-left: 25px;
+}
+
+span.value{
+	float: right;
+}
+
+p.entry{
+	width: 400px;
+}
+
+input[type=text].inline{
+	margin-right: 20px;
+}	
+
+span.value_input{
+	float: right;
+}
+
+span.expense_submit{
+	float: right;
+	position: relative;
+	right: -140px;
+	top: 1px;
+}
+
+#timer{
+	float: right;
+	width: 421px;
+	height: 71px;
+	background: url( '/images/timer_bg.png' ) no-repeat;
+	margin-top: 10px;
+}
+
+#timer .inner{
+	margin-top: 24px;
+	text-align: right;
+	margin-right: 20px;
+}
+
+#timer .current{
+	font-size: 18px;
+	color: #FFFFFF;
+}
+
+#timer select, option{
+	font-size: 16px;
+}
+
+#timer select{
+	width: 170px;
+}
+
+#timer input[type=submit]{
+	font-size: 16px;
+}
+
+#totals{
+	float: right;
+	width: 300px;
+}
+
+#totals h2{
+	margin-top: 0px;
+}
+
+#totals h3{
+	font-weight: normal;
+	border-bottom: 1px solid #999999;
+	width: 200px;
+}
+
+p.interval-date{
+	color: #555555;
+	font-style: italic;
+	margin-left: -10px;
+}
+
+span.open-interval{
+	font-style: italic;
+	font-size: 12px;
+}
+
+div.total p{
+	font-style: italic;
+	font-size: 12px;
+	color: #555555;
+	width: 200px;
+	clear: right;
+	margin: 0px;
+}
+
+div.total span.total-time, div.total span.total-amount{
+	font-size: 18px;
+	font-weight: bold;
+	font-style: normal;
+	float: right;
+}
+
+p.expense-form{
+	display: none;
+}
+
+p.expense-link a{
+	font-size: 12px;
+	text-decoration: none;
+}
+
+p.client-link{
+	font-size: 14px;
+	text-decoration: none;
+}
+
+#client-form{
+	display: none;
+}
+
+p.new-client{
+	width: 420px;
+}
+
+p.new-client .client-name input{
+	font-size: 16px;
+}
+
+p.new-client .client-name{
+	margin-right: 15px;
+}
+
+p.new-client .client-rate input{
+	font-size: 16px;
+}
+
+p.new-client .client-rate{
+	color: #666666;
+}
+
+p.new-client .client-submit{
+	float: right;
+	padding-top: 5px;
+}
