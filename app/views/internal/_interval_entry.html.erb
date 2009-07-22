@@ -1,0 +1,12 @@
+<p class="entry">
+	<% if interval.end %>
+		<%= time_diff( interval.start, interval.end ).strftime( time_format ) %> 
+		<span class="small">(<%= interval.start.strftime( time_format ) %> - <%= interval.end.strftime( time_format ) %>)</span>
+		<span class="value">&pound;<%= '%.2f' % ((interval.end - interval.start) * (client.rate / (60*60) )) %></span>
+	<% else %>
+		<span class="open-interval">Work in progress... <span id="counter"></span></span>
+		<script type="text/javascript">
+		setInterval('startTimer( <%= interval.start.to_f * 1000 %> );', 1000 )
+		</script>
+	<% end %>
+</p>

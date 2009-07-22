@@ -16,12 +16,25 @@ body{
 h1{
 	font-size: 32px;
 	font-weight: bold;
+	width: 420px;
 }
 
 h1 span.small{
 	font-size: 16px;
 	color: #666666;
 	font-weight: normal;
+}
+
+h1 span.edit-link{
+	float: right;
+	font-size: 12px;
+	padding-top: 15px;
+	display: none;
+}
+
+h1 span.edit-link a{
+	color: #d80e09;
+	text-decoration: none;
 }
 
 span.small{
@@ -174,4 +187,15 @@ p.new-client .client-rate{
 p.new-client .client-submit{
 	float: right;
 	padding-top: 5px;
+}
+
+div.edit-client{
+	display: none;
+}
+
+#notice{
+	background: #1c9f38;
+	color: #FFFFFF;
+	padding: 20px;
+	margin-bottom: 30px;
 }

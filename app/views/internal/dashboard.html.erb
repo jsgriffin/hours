@@ -7,38 +7,48 @@
 		<div class="total">
 			<h3><%= client.name %></h3>
 			<p>Time: <span class="total-time"><%= calculate_total_time( client ).strftime( @time_format ) %></span></p>
-			<p>Earned: <span class="total-amount">&pound;<%= '%.2f' % calculate_total_earnt( client ) %></span></p>
+			<% @c_total = calculate_total_earnt( client ) %>
+			<% @grand_total += @c_total %>
+			<p>Earned: <span class="total-amount">&pound;<%= '%.2f' % @c_total %></span></p>
 		</div>
 	<% end %>
+	
+	<div class="total">
+		<h3>Total</h3>
+		<p>Earned: <span class="total-amount">&pound;<%= '%.2f' % @grand_total %></span></p>
+	</div>
 </div>
 
 <% for client in @clients %>
 	<div class="client">
-		<h1 class="client"><%= client.name %> <span class="small">&pound;<%= '%.2f' % client.rate %>/hr</span></h1>
+		<h1 class="client" id="client-header-<%= client.id %>">
+			<%= client.name %> 
+			<span class="small">&pound;<%= '%.2f' % client.rate %>/hr</span> 
+			<span class="edit-link">
+				<a href="javascript:toggleClientInfo( <%= client.id %> )">+/-</a> | 
+				<a href="javascript:showEditClientForm( <%= client.id %> )">edit</a> | 
+				<a href="javascript:confirmDelete( 'client', '/clients/destroy/<%= client.id %>' )">x</a>
+			</span>
+		</h1>
 		
-		<div class="inner">
+		<div class="edit-client" id="client-edit-<%= client.id %>">
+			<% @client = client %>
+			<%= render :partial=>"client_form" %>
+		</div>
+		
+		<div class="inner" id="client-info-<%= client.id %>">
 			<% @current_date = "" %>
-			<% for interval in client.intervals %>
-				<% if interval.start.strftime( @date_format ) != @current_date %>
-					<p class="interval-date"><%= interval.start.strftime( @date_format ) %></p>
-					<% @current_date = interval.start.strftime( @date_format ) %>
-				<% end %>
-				<p class="entry">
-					<% if interval.end %>
-						<%= time_diff( interval.start, interval.end ).strftime( @time_format ) %> 
-						<span class="small">(<%= interval.start.strftime( @time_format ) %> - <%= interval.end.strftime( @time_format ) %>)</span>
-						<span class="value">&pound;<%= '%.2f' % ((interval.end - interval.start) * (client.rate / (60*60) )) %></span>
-					<% else %>
-						<span class="open-interval">Work in progress... <span id="counter"></span></span>
-						<script type="text/javascript">
-						setInterval('startTimer( <%= interval.start.to_f * 1000 %> );', 1000 )
-						</script>
-					<% end %>
-				</p>
-			<% end %>
 			
-			<% for expense in client.expenses %>
-				<p class="entry"><%= expense.description %> <span class="value">&pound;<%= '%.2f' % expense.amount %></span></p>
+			<% for item in client.combined %>
+				<% if item.date.strftime( @date_format ) != @current_date %>
+					<p class="interval-date"><%= item.date.strftime( @date_format ) %></p>
+					<% @current_date = item.date.strftime( @date_format ) %>
+				<% end %>
+				<% if item.is_expense %>
+					<%= render :partial=>"expense_entry", :locals=>{:expense=>item.expense} %>
+				<% else %>
+					<%= render :partial=>"interval_entry", :locals=>{:interval=>item.interval, :client=>client} %>
+				<% end %>
 			<% end %>
 	
 			<div class="expense_form">
@@ -60,5 +70,7 @@
 <p id="client-link" class="client-link"><a href="javascript:showClientForm()">+ New Client</a></p>
 
 <div id="client-form">
+	<% @client = Client.new %>
+	<% @client.name = "Name" %>
 	<%= render :partial=>"client_form" %>
 </div>

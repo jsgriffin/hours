@@ -48,5 +48,9 @@ module ApplicationHelper
   	@t -= 60*60
   	return @t
   end
+  
+  def time_format
+  	return "%H:%M:%S"
+  end
    
 end

@@ -67,16 +67,11 @@ class ClientsController < ApplicationController
   def update
     @client = Client.find(params[:id])
 
-    respond_to do |format|
-      if @client.update_attributes(params[:client])
-        flash[:notice] = 'Client was successfully updated.'
-        format.html { redirect_to(@client) }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @client.errors, :status => :unprocessable_entity }
-      end
+    if !@client.update_attributes(params[:client])
+      flash[:notice] = 'Client could not be updated.'
     end
+    
+    redirect_to "/dashboard"
   end
 
   # DELETE /clients/1
@@ -85,9 +80,7 @@ class ClientsController < ApplicationController
     @client = Client.find(params[:id])
     @client.destroy
 
-    respond_to do |format|
-      format.html { redirect_to(clients_url) }
-      format.xml  { head :ok }
-    end
+    flash[:notice] = 'The client has been deleted.'
+    redirect_to "/dashboard"
   end
 end

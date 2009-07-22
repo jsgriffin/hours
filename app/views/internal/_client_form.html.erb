@@ -1,7 +1,6 @@
-<% @client = Client.new %>
 <% form_for(@client) do |f| %>
   <p class="new-client">
-    <span class="client-name"><%= f.text_field :name, :value=>"Name", :size=>"20" %></span>
+    <span class="client-name"><%= f.text_field :name, :size=>"20" %></span>
     <span class="client-rate">&pound;<%= f.text_field :rate, :size=>"5" %>/hr</span>
     <span class="client-submit"><%= f.submit 'Save' %></span>
   </p>
