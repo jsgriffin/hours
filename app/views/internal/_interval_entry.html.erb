@@ -1,12 +1,27 @@
-<p class="entry">
-	<% if interval.end %>
-		<%= time_diff( interval.start, interval.end ).strftime( time_format ) %> 
-		<span class="small">(<%= interval.start.strftime( time_format ) %> - <%= interval.end.strftime( time_format ) %>)</span>
-		<span class="value">&pound;<%= '%.2f' % ((interval.end - interval.start) * (client.rate / (60*60) )) %></span>
-	<% else %>
-		<span class="open-interval">Work in progress... <span id="counter"></span></span>
-		<script type="text/javascript">
-		setInterval('startTimer( <%= interval.start.to_f * 1000 %> );', 1000 )
-		</script>
-	<% end %>
-</p>
+<div class="entry-wrapper" id="interval-<%= interval.id %>">
+	<span class="edit-link">
+		<a href="javascript:showEditIntervalForm( <%= interval.id %> )">edit</a> | 
+		<a href="javascript:confirmDelete( 'interval', '/intervals/destroy/<%= interval.id %>' )">x</a>
+	</span>
+	<p class="entry">
+		<% if interval.end %>
+			<%= time_diff( interval.start, interval.end ).strftime( time_format ) %> 
+			<span class="small">(<%= interval.start.strftime( time_format ) %> - <%= interval.end.strftime( time_format ) %>)</span>
+			<span class="value">&pound;<%= '%.2f' % ((interval.end - interval.start) * (client.rate / (60*60) )) %></span>
+		<% else %>
+			<span class="open-interval">Work in progress... <span id="counter"></span></span>
+			<script type="text/javascript">
+			setInterval('startTimer( <%= interval.start.to_f * 1000 %> );', 1000 )
+			</script>
+		<% end %>
+	</p>
+</div>
+
+<div class="entry-wrapper edit-expense-form" id="edit-interval-<%= interval.id %>">
+	<% form_for(interval) do |f| %>
+   		<%= f.datetime_select :start, :discard_day=>true, :discard_month=>true, :discard_year=>true %>
+   		- 
+   		<%= f.datetime_select :end, :discard_day=>true, :discard_month=>true, :discard_year=>true %>
+    	<span class="submit"><%= f.submit 'Update' %></span>
+	<% end %>	
+</div>

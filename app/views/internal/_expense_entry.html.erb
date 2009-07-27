@@ -1,1 +1,13 @@
-<p class="entry"><%= expense.description %> <span class="value">&pound;<%= '%.2f' % expense.amount %></span></p>
+<div class="entry-wrapper" id="expense-<%= expense.id %>">
+	<span class="edit-link">
+		<a href="javascript:showEditExpenseForm( <%= expense.id %> )">edit</a> | 
+		<a href="javascript:confirmDelete( 'expense', '/expenses/destroy/<%= expense.id %>' )">x</a>
+	</span>
+	<p class="entry"><%= expense.description %> <span class="value">&pound;<%= '%.2f' % expense.amount %></span></p>
+</div>
+
+<div class="entry-wrapper edit-form" id="edit-expense-<%= expense.id %>">
+	<% form_for(expense) do |f| %>
+	    <%= f.text_field :description %> <span class="value">&pound;<%= f.text_field :amount, :size=>"5" %></span> <span class="submit"><%= f.submit 'Update' %></span>
+	<% end %>
+</div>

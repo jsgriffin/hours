@@ -16,7 +16,7 @@ body{
 h1{
 	font-size: 32px;
 	font-weight: bold;
-	width: 420px;
+	width: 460px;
 }
 
 h1 span.small{
@@ -27,14 +27,24 @@ h1 span.small{
 
 h1 span.edit-link{
 	float: right;
-	font-size: 12px;
 	padding-top: 15px;
 	display: none;
 }
 
-h1 span.edit-link a{
+span.edit-link{
+	font-size: 12px;
+}
+
+span.edit-link a{
 	color: #d80e09;
 	text-decoration: none;
+}
+
+div.entry-wrapper span.edit-link{
+	float: right;
+	padding-top: 1px;
+	margin-right: 10px;
+	display: none;
 }
 
 span.small{
@@ -54,8 +64,45 @@ span.value{
 	float: right;
 }
 
+div.entry-wrapper span.submit{
+	float: right;
+	margin-right: -130px;
+	padding-top: 1px;
+}
+
+div.edit-expense-form span.submit{
+	float: right;
+	margin-right: -68px;
+	padding-top: 1px;
+}
+
+div.entry-wrapper form{
+	width: 400px;
+}
+
+div.edit-form, div.edit-expense-form{
+	display: none;
+}
+
+div.entry-wrapper select{
+	width: 50px;
+}	
+
+p.date-select-group{
+	margin: 0px 0px 3px 30px;
+}
+
+span.to-text{
+	margin-left: -30px;
+	float: left;
+}
+
 p.entry{
 	width: 400px;
+}
+
+div.entry-wrapper{
+	width: 460px;
 }
 
 input[type=text].inline{

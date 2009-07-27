@@ -33,6 +33,16 @@ function showEditClientForm( id ){
 	$( 'client-edit-' + id ).style.display = 'block';
 }
 
+function showEditExpenseForm( id ){
+	$( 'expense-' + id ).style.display = 'none';
+	$( 'edit-expense-' + id ).style.display = 'block';
+}
+
+function showEditIntervalForm( id ){
+	$( 'interval-' + id ).style.display = 'none';
+	$( 'edit-interval-' + id ).style.display = 'block';
+}
+
 function hideNotice(){
 	$( 'notice' ).style.display = 'none';
 }
@@ -52,6 +62,13 @@ function init(){
 		clients[i].onmouseover = showEditControls;
 		clients[i].onmouseout = hideEditControls;
 	}
+	
+	var entries = $$( 'div.entry-wrapper' );
+	
+	for( var i = 0; i < entries.length; i++ ){
+		entries[i].onmouseover = showEditControls;
+		entries[i].onmouseout = hideEditControls;
+	}	
 }
 
 function showEditControls( e ){	

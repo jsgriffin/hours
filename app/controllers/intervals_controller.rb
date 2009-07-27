@@ -65,16 +65,13 @@ class IntervalsController < ApplicationController
   def update
     @interval = Interval.find(params[:id])
 
-    respond_to do |format|
-      if @interval.update_attributes(params[:interval])
-        flash[:notice] = 'Interval was successfully updated.'
-        format.html { redirect_to(@interval) }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @interval.errors, :status => :unprocessable_entity }
-      end
+    if @interval.update_attributes(params[:interval])
+      flash[:notice] = 'Interval was successfully updated.'
+    else
+      flash[:notice] = "The interval could not be updated, sorry! Please try again"
     end
+    
+    redirect_to "/dashboard"
   end
 
   # DELETE /intervals/1
@@ -83,9 +80,7 @@ class IntervalsController < ApplicationController
     @interval = Interval.find(params[:id])
     @interval.destroy
 
-    respond_to do |format|
-      format.html { redirect_to(intervals_url) }
-      format.xml  { head :ok }
-    end
+    flash[:notice] = "The interval was deleted successfully."
+    redirect_to "/dashboard"
   end
 end

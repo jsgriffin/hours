@@ -71,16 +71,13 @@ class ExpensesController < ApplicationController
   def update
     @expense = Expense.find(params[:id])
 
-    respond_to do |format|
-      if @expense.update_attributes(params[:expense])
-        flash[:notice] = 'Expense was successfully updated.'
-        format.html { redirect_to(@expense) }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @expense.errors, :status => :unprocessable_entity }
-      end
+    if @expense.update_attributes(params[:expense])
+      flash[:notice] = 'Expense was successfully updated.'
+    else
+	  flash[:notice] = "Expense could not be updated, sorry! Please try again."
     end
+    
+    redirect_to "/dashboard"
   end
 
   # DELETE /expenses/1
@@ -89,9 +86,7 @@ class ExpensesController < ApplicationController
     @expense = Expense.find(params[:id])
     @expense.destroy
 
-    respond_to do |format|
-      format.html { redirect_to(expenses_url) }
-      format.xml  { head :ok }
-    end
+    flash[:notice] = "The expense was deleted successfully"
+    redirect_to "/dashboard"
   end
 end
