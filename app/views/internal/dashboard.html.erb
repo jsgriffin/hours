@@ -17,6 +17,18 @@
 		<h3>Total</h3>
 		<p>Earned: <span class="total-amount">&pound;<%= '%.2f' % @grand_total %></span></p>
 	</div>
+	
+	<div class="user-controls">
+		<h3>Controls</h3>
+		
+		<ul>
+			<li><a href="/users/edit/<%= session[:user_id] %>">My account</a></li>
+			<li><a href="/feedback/submit">Submit feedback</a></li>
+			<li><a href="/logout">Logout</a></li>
+		</ul>
+		
+	</div>
+	
 </div>
 
 <% for client in @clients %>

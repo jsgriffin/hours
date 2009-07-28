@@ -17,7 +17,6 @@ class HomeController < ApplicationController
   		flash[:notice] = "Invalid login credentials"
   		redirect_to :action => "login"
   	end
-  	
   end 
   
   def logout

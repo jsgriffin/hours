@@ -30,4 +30,8 @@ class ApplicationController < ActionController::Base
   	return @user
   end
   
+  def encode( str )
+	return Digest::MD5.hexdigest( str )
+  end  
+  
 end

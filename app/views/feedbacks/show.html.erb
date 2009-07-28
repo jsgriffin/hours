@@ -1,0 +1,13 @@
+<p>
+  <b>User:</b>
+  <%=h @feedback.user_id %>
+</p>
+
+<p>
+  <b>Message:</b>
+  <%=h @feedback.message %>
+</p>
+
+
+<%= link_to 'Edit', edit_feedback_path(@feedback) %> |
+<%= link_to 'Back', feedbacks_path %>
