@@ -1,0 +1,286 @@
+h1.client{
+	margin-bottom: 10px;
+}
+
+h1 span.small{
+	font-size: 16px;
+	color: #666666;
+	font-weight: normal;
+}
+
+h1 span.edit-link{
+	display: none;
+}
+
+span.edit-link{
+	font-size: 12px;
+	background: #FFFFFF;
+	padding: 4px;
+	position: absolute;
+	right: 0px;
+	border: 1px solid #A9A9A9;
+}
+
+span.edit-link a{
+	color: #d80e09;
+	text-decoration: none;
+}
+
+div.entry-wrapper span.edit-link{
+	float: right;
+	padding-top: 1px;
+	margin-right: 10px;
+	display: none;
+}
+
+span.small{
+	color: #666666;
+	font-size: 12px;
+}
+
+div.client{
+	margin-bottom: 40px;
+}
+
+div.client div.inner{
+	margin-left: 25px;
+}
+
+span.value{
+	float: right;
+}
+
+div.entry-wrapper span.submit{
+	float: right;
+	margin-right: -130px;
+	padding-top: 1px;
+}
+
+div.edit-expense-form span.submit{
+	float: right;
+	margin-right: -68px;
+	padding-top: 1px;
+}
+
+div.entry-wrapper form{
+	width: 400px;
+}
+
+div.edit-form, div.edit-expense-form{
+	display: none;
+}
+
+div.entry-wrapper select{
+	width: 50px;
+}	
+
+p.date-select-group{
+	margin: 0px 0px 3px 30px;
+}
+
+span.to-text{
+	margin-left: -30px;
+	float: left;
+}
+
+p.entry{
+	width: 400px;
+	margin: 4px 0px 0px 0px;
+}
+
+div.entry-wrapper{
+	width: 460px;
+	position: relative;
+}
+
+div.entry-wrapper span.edit-link{
+	top: -5px;
+}
+
+input[type=text].inline{
+	margin-right: 20px;
+}	
+
+span.value_input{
+	float: right;
+}
+
+span.expense_submit{
+	float: right;
+	position: relative;
+	right: -140px;
+	top: 1px;
+}
+
+#timer{
+	float: right;
+	width: 421px;
+	height: 71px;
+	background: url( '/images/timer_bg.png' ) no-repeat;
+	margin-top: 10px;
+}
+
+#timer .inner{
+	margin-top: 24px;
+	text-align: right;
+	margin-right: 20px;
+}
+
+#timer .current{
+	font-size: 18px;
+	color: #FFFFFF;
+}
+
+#timer select, option{
+	font-size: 16px;
+}
+
+#timer select{
+	width: 170px;
+}
+
+#timer input[type=submit]{
+	font-size: 16px;
+}
+
+#totals{
+	float: right;
+	width: 300px;
+}
+
+#totals h2{
+	margin-top: 0px;
+}
+
+#totals h3{
+	font-weight: normal;
+	border-bottom: 1px solid #999999;
+	width: 200px;
+}
+
+p.interval-date{
+	color: #555555;
+	font-style: italic;
+	margin-left: -10px;
+	margin-top: 4px;
+	margin-bottom: 0px;
+}
+
+span.open-interval{
+	font-style: italic;
+	font-size: 12px;
+}
+
+div.total p{
+	font-style: italic;
+	font-size: 12px;
+	color: #555555;
+	width: 200px;
+	clear: right;
+	margin: 0px;
+}
+
+div.total span.total-time, div.total span.total-amount{
+	font-size: 18px;
+	font-weight: bold;
+	font-style: normal;
+	float: right;
+}
+
+span.grand-total{
+	color: #232323;
+}
+
+p.expense-form{
+	display: none;
+}
+
+p.expense-link a{
+	font-size: 12px;
+	text-decoration: none;
+}
+
+p.client-link{
+	font-size: 14px;
+	text-decoration: none;
+}
+
+#client-form{
+	display: none;
+}
+
+p.new-client{
+	width: 420px;
+}
+
+p.new-client .client-name input{
+	font-size: 16px;
+}
+
+p.new-client .client-name{
+	margin-right: 15px;
+}
+
+p.new-client .client-rate input{
+	font-size: 16px;
+}
+
+p.new-client .client-rate{
+	color: #666666;
+}
+
+p.new-client .client-submit{
+	float: right;
+	padding-top: 5px;
+}
+
+div.edit-client{
+	display: none;
+}
+
+#notice{
+	background: #1c9f38;
+	color: #FFFFFF;
+	padding: 20px;
+	margin-bottom: 30px;
+}
+
+div.user-controls{
+	background: #232323;
+	width: 200px;
+	clear: both;
+	margin-top: 20px;
+}
+
+div.user-controls .inner{
+	padding: 10px;
+}
+
+#totals div.user-controls h3{
+	color: #FFFFFF;
+	border: none;
+	padding: 0px;
+	margin-top: 0px;
+	margin-bottom: 10px;
+	font-size: 24px;
+}
+
+div.user-controls ul{
+	list-style-type: none;
+	padding: 0px;
+	margin: 0px;
+}
+
+div.user-controls ul li{
+	margin-bottom: 3px;
+	padding-left: 15px;
+}
+
+div.user-controls a{
+	color: #C9C9C9;
+	text-decoration: none;
+}
+
+div.user-controls a:hover{
+	color: #FFFFFF;
+}

@@ -20,6 +20,14 @@ class ApplicationController < ActionController::Base
 	end
   end
   
+  def check_admin
+  	@user = get_current_user
+  	if @user.level != 'A'
+  		flash[:notice] = "You do not have permission to view this page"
+  		redirect_to "/dashboard"
+  	end
+  end
+  
   def get_current_user
   	if check_login
   		@user = User.find( :first, :conditions=>["id = ?", session[:user_id]] )

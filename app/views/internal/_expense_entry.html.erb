@@ -1,7 +1,8 @@
 <div class="entry-wrapper" id="expense-<%= expense.id %>">
 	<span class="edit-link">
-		<a href="javascript:showEditExpenseForm( <%= expense.id %> )">edit</a> | 
-		<a href="javascript:confirmDelete( 'expense', '/expenses/destroy/<%= expense.id %>' )">x</a>
+		<a href="javascript:showEditExpenseForm( <%= expense.id %> )"><img src="/images/edit-icon.png" alt="edit" title="edit" /></a> 
+		<a href="javascript:confirmDelete( 'expense', '/expenses/destroy/<%= expense.id %>' )"><img src="/images/delete-icon.png" alt="delete" title="delete" /></a>
+		<a href="javascript:showEntryControlsHelp()"><img src="/images/help-icon.png" alt="help" title="help" /></a>
 	</span>
 	<p class="entry"><%= expense.description %> <span class="value">&pound;<%= '%.2f' % expense.amount %></span></p>
 </div>

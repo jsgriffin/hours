@@ -1,5 +1,6 @@
 class FeedbacksController < ApplicationController
   layout "home"
+  before_filter :check_admin, :except=>[:submit,:create]
 
   # GET /feedbacks
   # GET /feedbacks.xml
@@ -43,7 +44,7 @@ class FeedbacksController < ApplicationController
   	@feedback = @user.feedbacks.build( params[:feedback] )
 
     if @feedback.save
-    	MailSystem::deliver_mail( @user )
+    	MailSystem::deliver_mail( @user, params[:feedback][:message] )
     
         flash[:notice] = 'Thanks for your feedback!'
         redirect_to "/dashboard"

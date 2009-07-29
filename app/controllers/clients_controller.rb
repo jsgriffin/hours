@@ -1,43 +1,4 @@
 class ClientsController < ApplicationController
-  # GET /clients
-  # GET /clients.xml
-  def index
-    @clients = Client.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @clients }
-    end
-  end
-
-  # GET /clients/1
-  # GET /clients/1.xml
-  def show
-    @client = Client.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @client }
-    end
-  end
-
-  # GET /clients/new
-  # GET /clients/new.xml
-  def new
-    @client = Client.new
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @client }
-    end   
-  end
-
-  # GET /clients/1/edit
-  def edit
-    @client = Client.find(params[:id])
-  end
-
-  # POST /clients
-  # POST /clients.xml
   def create
     #@client = Client.new(params[:client])
 
@@ -62,8 +23,6 @@ class ClientsController < ApplicationController
     end
   end
 
-  # PUT /clients/1
-  # PUT /clients/1.xml
   def update
     @client = Client.find(params[:id])
 
@@ -74,8 +33,6 @@ class ClientsController < ApplicationController
     redirect_to "/dashboard"
   end
 
-  # DELETE /clients/1
-  # DELETE /clients/1.xml
   def destroy
     @client = Client.find(params[:id])
     @client.destroy

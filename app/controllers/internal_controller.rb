@@ -1,5 +1,5 @@
 class InternalController < ApplicationController
-
+  FREE_CLIENTS_LIMIT = 5
   before_filter :check_login, :only=>[:dashboard]
 
   def dashboard
@@ -9,6 +9,12 @@ class InternalController < ApplicationController
 	if @clients.size == 0
 		@client = Client.new
 		render :action=>"first_client"
+	end
+	
+	if @user.level == 'F' && @clients.size == FREE_CLIENTS_LIMIT
+		@limit_reached = true
+	else
+		@limit_reached = false
 	end
 
 	for i in 0...@clients.length
@@ -42,6 +48,10 @@ class InternalController < ApplicationController
 
   def first_client
   	@client = Client.new
+  end
+  
+  def account
+  	@user = get_current_user
   end
   
 end

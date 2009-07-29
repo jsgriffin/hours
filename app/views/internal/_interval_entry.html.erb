@@ -1,7 +1,8 @@
 <div class="entry-wrapper" id="interval-<%= interval.id %>">
 	<span class="edit-link">
-		<a href="javascript:showEditIntervalForm( <%= interval.id %> )">edit</a> | 
-		<a href="javascript:confirmDelete( 'interval', '/intervals/destroy/<%= interval.id %>' )">x</a>
+		<a href="javascript:showEditIntervalForm( <%= interval.id %> )"><img src="/images/edit-icon.png" alt="edit" title="edit" /></a> 
+		<a href="javascript:confirmDelete( 'interval', '/intervals/destroy/<%= interval.id %>' )"><img src="/images/delete-icon.png" alt="delete" title="delete" /></a>
+		<a href="javascript:showEntryControlsHelp()"><img src="/images/help-icon.png" alt="help" title="help" /></a>
 	</span>
 	<p class="entry">
 		<% if interval.end %>

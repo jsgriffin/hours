@@ -1,0 +1,37 @@
+<div id="totals">
+	<h2>Totals</h2>
+
+	<% @grand_total = 0 %>
+	
+	<% for client in @clients %>
+		<div class="total">
+			<h3><%= client.name %></h3>
+			<p>Time: <span class="total-time"><%= calculate_total_time( client ).strftime( @time_format ) %></span></p>
+			<% @c_total = calculate_total_earnt( client ) %>
+			<% @grand_total += @c_total %>
+			<p>Earned: <span class="total-amount">&pound;<%= '%.2f' % @c_total %></span></p>
+		</div>
+	<% end %>
+	
+	<div class="total">
+		<h3>Total</h3>
+		<p>Earned: <span class="total-amount grand-total">&pound;<%= '%.2f' % @grand_total %></span></p>
+	</div>
+	
+	<div class="user-controls">
+		<div class="inner">
+			<h3>Controls</h3>
+			
+			<ul>
+				<li><a href="/account">My account</a></li>
+				<li><a href="/feedback/submit">Submit feedback</a></li>
+				<li><a href="/logout">Logout</a></li>
+				<% if is_admin(@user) %>
+				<li><a href="/users">Manage users</a></li>
+				<li><a href="/feedback">View feedback</a></li>
+				<% end %>
+			</ul>
+		</div>		
+	</div>
+	
+</div>

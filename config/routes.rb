@@ -60,4 +60,6 @@ ActionController::Routing::Routes.draw do |map|
   map.connect 'login/', :controller=>'home', :action=>'login'
   map.connect 'logout/', :controller=>'home', :action=>'logout'
   map.connect 'dashboard/', :controller=>'internal', :action=>'dashboard'
+  map.connect 'account/', :controller=>'internal', :action=>'account'
+  map.connect 'signup/', :controller=>'home', :action=>'signup'
 end

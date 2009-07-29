@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_filter :check_login, :only=>[:index,:show,:edit,:new,:update,:destroy]
+  before_filter :check_login, :only=>[:edit,:update]
+  before_filter :check_admin, :except=>[:edit,:update]
   layout "home"
 	
   # GET /users
@@ -44,6 +45,7 @@ class UsersController < ApplicationController
   # POST /users.xml
   def create
 	params[:user][:password] = encode( params[:user][:password] )
+	params[:user][:level] = 'F'
     @user = User.new(params[:user])
 	
 	@existing = User.find( :all, :conditions=>["email = ?", params[:user][:email] ] )
@@ -55,6 +57,7 @@ class UsersController < ApplicationController
 	end	
 	
     if @user.save
+    	MailSystem.deliver_new_user( @user )
         flash[:notice] = 'Welcome to hours! To get you started, please create your first client.'
   		session[:user_id] = @user.id        
 		redirect_to "/dashboard"
