@@ -1,12 +1,15 @@
 <html>
 	<head>
 		<title>Hours - Dashboard</title>
-		<link rel="stylesheet" href="/stylesheets/style.css" />
+		<link rel="stylesheet" href="/stylesheets/style-common.css" />
+		<link rel="stylesheet" href="/stylesheets/style-internal.css" />
 		<script type="text/javascript" src="/javascripts/prototype.js"></script>
 		<script type="text/javascript" src="/javascripts/application.js"></script>
 	</head>
 
 	<body>
+		<div id="top-bar"></div>
+		
 		<div id="banner">
 			<img src="/images/logo.png" alt="" title="hours" />
 			<div id="timer">
@@ -23,6 +26,17 @@
 			<% end %>
 			<%= yield %>
 		</div>
+	
+		<script type="text/javascript">
+		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+		<script type="text/javascript">
+		try {
+		var pageTracker = _gat._getTracker("UA-2613410-7");
+		pageTracker._trackPageview();
+		} catch(err) {}</script>		
+		
 	</body>
 
 </html>

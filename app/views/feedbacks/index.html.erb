@@ -1,0 +1,17 @@
+<h1>Feedback</h1>
+
+<table width="100%">
+  <tr>
+    <th>User</th>
+    <th>Message</th>
+  </tr>
+
+<% @feedbacks.each do |feedback| %>
+  <tr>
+    <td><%=h get_user_name( feedback.user_id ) %></td>
+    <td><%=h feedback.message %></td>
+    <td><%= link_to 'Show', feedback %></td>
+    <td><%= link_to 'Destroy', feedback, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>

@@ -1,0 +1,35 @@
+body{
+	/*background: url( '/images/body_bg.jpg' ) repeat-x;*/
+	font-family: Helvetica, Verdana, Arial, sans-serif;
+	background: #F6F6F6;
+}
+
+#top-bar{
+	height: 8px;
+	width: 100%;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	background: #d92929;
+}
+
+#banner{
+	width: 1080px;
+	margin: 40px auto 0px auto;	
+}
+
+#wrapper{
+	width: 850px;
+	margin: 50px auto 100px auto;
+}
+
+a img{
+	border: none;
+}
+
+h1{
+	font-size: 32px;
+	font-weight: bold;
+	width: 460px;
+	position: relative;
+}

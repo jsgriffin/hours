@@ -1,0 +1,12 @@
+<h1>Submit feedback</h1>
+
+<p>We'd love to hear any feedback from you, so please go ahead and tell us what you think!</p>
+
+<% form_for(@feedback) do |f| %>
+  <p>
+    <%= f.text_area :message, :value=>"Feedback..." %>
+  </p>
+  <p>
+    <%= f.submit 'Send!' %>
+  </p>
+<% end %>

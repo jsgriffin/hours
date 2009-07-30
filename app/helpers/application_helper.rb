@@ -52,5 +52,14 @@ module ApplicationHelper
   def time_format
   	return "%H:%M:%S"
   end
+  
+  def is_admin(user)
+  	return user.level == 'A'
+  end
+   
+  def get_user_name( id )
+  	@user = User.find(id)
+  	return @user.name
+  end 
    
 end

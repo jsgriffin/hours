@@ -1,23 +1,4 @@
-<div id="totals">
-	<h2>Totals</h2>
-
-	<% @grand_total = 0 %>
-	
-	<% for client in @clients %>
-		<div class="total">
-			<h3><%= client.name %></h3>
-			<p>Time: <span class="total-time"><%= calculate_total_time( client ).strftime( @time_format ) %></span></p>
-			<% @c_total = calculate_total_earnt( client ) %>
-			<% @grand_total += @c_total %>
-			<p>Earned: <span class="total-amount">&pound;<%= '%.2f' % @c_total %></span></p>
-		</div>
-	<% end %>
-	
-	<div class="total">
-		<h3>Total</h3>
-		<p>Earned: <span class="total-amount">&pound;<%= '%.2f' % @grand_total %></span></p>
-	</div>
-</div>
+<%= render :partial=>"right_column", :locals=>{:clients=>@clients, :time_format=>@time_format, :user=>@user} %>
 
 <% for client in @clients %>
 	<div class="client">
@@ -25,9 +6,13 @@
 			<%= client.name %> 
 			<span class="small">&pound;<%= '%.2f' % client.rate %>/hr</span> 
 			<span class="edit-link">
-				<a href="javascript:toggleClientInfo( <%= client.id %> )">+/-</a> | 
-				<a href="javascript:showEditClientForm( <%= client.id %> )">edit</a> | 
-				<a href="javascript:confirmDelete( 'client', '/clients/destroy/<%= client.id %>' )">x</a>
+				<a href="javascript:showExpenseForm( <%= client.id %> )"><img src="/images/add-expense-icon.png" alt="add an expense" title="add expense" /></a> 
+				<a href="javascript:showEditClientForm( <%= client.id %> )"><img src="/images/edit-icon.png" alt="edit" title="edit" /></a> 
+				<a href="javascript:confirmDelete( 'client', '/clients/destroy/<%= client.id %>' )"><img src="/images/delete-icon.png" alt="delete" title="delete" /></a>
+				<% if !@limit_reached %>
+				<a href="javascript:showClientForm()"><img src="/images/add-client-icon.png" alt="add a client" title="add a client" /></a> 
+				<% end %>
+				<a href="javascript:showClientControlsHelp()"><img src="/images/help-icon.png" alt="help" title="help" /></a>
 			</span>
 		</h1>
 		
@@ -52,7 +37,7 @@
 			<% end %>
 	
 			<div class="expense_form">
-				<p class="entry expense-link" id="expense-link-<%= client.id %>"><a href="javascript:showExpenseForm( <%= client.id %> )">+ New expense</a></p>	
+				<!--<p class="entry expense-link" id="expense-link-<%= client.id %>"><a href="javascript:showExpenseForm( <%= client.id %> )">+ New expense</a></p>-->
 				<% @expense = client.expenses.build %>
 				<% form_for(@expense) do |f| %>			
 				  <p class="entry expense-form" id="expense-form-<%= client.id %>">
@@ -67,7 +52,11 @@
 	</div>
 <% end %>
 
-<p id="client-link" class="client-link"><a href="javascript:showClientForm()">+ New Client</a></p>
+<% if @limit_reached %>
+<p class="limit-reached">Your client limit has been reached. <a href="/upgrade">Upgrade your account</a> to add more clients.</p>
+<% else %>
+
+<% end %>
 
 <div id="client-form">
 	<% @client = Client.new %>

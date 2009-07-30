@@ -1,4 +1,4 @@
-<h1>Editing <%= @user.name %></h1>
+<h1>My account</h1>
 
 <% form_for(@user) do |f| %>
   <%= f.error_messages %>
@@ -12,15 +12,14 @@
     <%= f.label :email %>
     <%= f.text_field :email %>
   </p>
- 
+  
   <p>
-  	<%= f.label :level %>
-  	<%= f.select :level, { "Free"=>"F", "Paid"=>"P", "VIP"=>"V", "Admin"=>"A" } %>
+    <%= f.label :password %>
+    <%= f.password_field :password, :value=>"" %><br />
+    <input type="password" name="password_2" value="" />
   </p>
- 
+  
   <p>
     <%= f.submit 'Update' %>
   </p>
 <% end %>
-
-<p><a href="/users/reset_password/<%= @user.id %>">Reset password</a></p>

@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
-  before_filter :check_login, :only=>[:index,:show,:edit,:new,:update,:destroy]
+  before_filter :check_login, :only=>[:edit,:update]
+  before_filter :check_admin, :except=>[:edit,:update]
+  layout "home"
 	
   # GET /users
   # GET /users.xml
@@ -42,9 +44,20 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.xml
   def create
+	params[:user][:password] = encode( params[:user][:password] )
+	params[:user][:level] = 'F'
     @user = User.new(params[:user])
-
+	
+	@existing = User.find( :all, :conditions=>["email = ?", params[:user][:email] ] )
+	
+	if @existing.size > 0
+		flash[:notice] = "Someone with that email address is already registered. Please choose another email address, <a href=\"/login\">Login</a> or <a href=\"/users/forgotten\">reset your password</a>." 
+		render :action=>"new"
+		return false
+	end	
+	
     if @user.save
+    	MailSystem.deliver_new_user( @user )
         flash[:notice] = 'Welcome to hours! To get you started, please create your first client.'
   		session[:user_id] = @user.id        
 		redirect_to "/dashboard"
@@ -59,15 +72,22 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
 
-    respond_to do |format|
-      if @user.update_attributes(params[:user])
-        flash[:notice] = 'User was successfully updated.'
-        format.html { redirect_to(@user) }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
-      end
+	if params[:user][:password].blank?
+		params[:user][:password] = @user.password
+	elsif params[:user][:password] != params[:password_2]
+		flash[:notice] = "Your passwords did not match"
+		render :action=>"edit"
+		return false
+	else
+		params[:user][:password] = encode( params[:user][:password] )
+	end
+
+    if @user.update_attributes(params[:user])
+      flash[:notice] = 'Your details were successfully updated.'
+      redirect_to "/dashboard"
+    else
+      flash[:notice] = "Your details could not be updated, sorry! Please try again"
+      render :action=>"edit"
     end
   end
 

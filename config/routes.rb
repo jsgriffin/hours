@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :feedbacks
+
   map.resources :intervals
 
   map.resources :expenses
@@ -52,6 +54,12 @@ ActionController::Routing::Routes.draw do |map|
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
   
+  map.connect 'feedback/:action', :controller=>'feedbacks'
+  map.connect 'feedback/:action/:id', :controller=>'feedbacks'
+  
   map.connect 'login/', :controller=>'home', :action=>'login'
+  map.connect 'logout/', :controller=>'home', :action=>'logout'
   map.connect 'dashboard/', :controller=>'internal', :action=>'dashboard'
+  map.connect 'account/', :controller=>'internal', :action=>'account'
+  map.connect 'signup/', :controller=>'home', :action=>'signup'
 end

@@ -17,7 +17,6 @@ class HomeController < ApplicationController
   		flash[:notice] = "Invalid login credentials"
   		redirect_to :action => "login"
   	end
-  	
   end 
   
   def logout
@@ -26,5 +25,9 @@ class HomeController < ApplicationController
   		redirect_to :action => "index"
   	end	
   end
+
+  def signup
+	@user = User.new
+  end	
 
 end
