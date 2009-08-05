@@ -20,11 +20,9 @@ function startTimer( start ){
 
 function showExpenseForm( id ){
 	$( 'expense-form-' + id ).style.display = 'block';
-	$( 'expense-link-' + id ).style.display = 'none';
 }
 
 function showClientForm(){
-	$( 'client-link' ).style.display = 'none';
 	$( 'client-form' ).style.display = 'block';
 }
 

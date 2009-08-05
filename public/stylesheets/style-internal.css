@@ -131,7 +131,7 @@ span.expense_submit{
 	color: #FFFFFF;
 }
 
-#timer select, option{
+#timer select, #timer option{
 	font-size: 16px;
 }
 
@@ -283,4 +283,88 @@ div.user-controls a{
 
 div.user-controls a:hover{
 	color: #FFFFFF;
+}
+
+div.view-options{
+	background: #424242;
+	padding: 20px;
+	position: relative;
+	height: 200px;
+	margin-bottom: 40px;
+}
+
+div.view-options h2{
+	font-weight: normal;
+	font-size: 26px;
+	color: #D6D6D6;
+	margin-bottom: 10px;
+	margin-top: 0px;
+}
+
+div.view-options h3{
+	margin-top: 0px;
+	margin-bottom: 4px;
+	font-weight: normal;
+	font-size: 18px;
+	color: #B8B8B8;
+}
+
+div.view-options .client-list-wrapper{
+	width: 240px;
+	float: left;
+	margin-right: 50px;
+}
+
+div.view-options .client-list{
+	height: 100px;
+	width: 240px;
+	padding: 7px;
+	background: #F7F7F7;
+	overflow: auto;
+}	
+
+div.view-options .client-list p{
+	margin: 2px 4px;
+	font-size: 12px;
+}
+
+div.view-options .client-list p.odd{
+	background: #FFFFFF;
+}
+
+div.view-options .client-list-wrapper p.small{
+	color: #7db5ff;
+	font-size: 10px;
+	text-align: right;
+}
+
+div.view-options .client-list-wrapper p.small a{
+	color: #7db5ff;
+	text-decoration: none;
+}
+
+div.view-options .dates-wrapper{
+	float: left;
+	width: 240px;
+	color: #B8B8B8;
+	font-size: 12px;
+	margin-right: 20px;
+}
+
+div.view-options form{
+	margin-bottom: 0px;
+}
+
+div.view-options select, div.view-options option{
+	font-size: 12px;
+	padding: 2px;
+}
+
+div.submit-wrapper input{
+	border-style: none;
+	color: white;
+	background-color: #2bd844;
+	font-size: 18px;
+	padding: 4px 10px;
+	margin-top: -10px;
 }

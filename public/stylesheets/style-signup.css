@@ -1,0 +1,60 @@
+#banner{
+	float: right;
+	width: auto;
+	margin-right: -40px;
+}
+
+h1{
+	font-size: 50px;
+	margin-left: -40px;
+	float: left;
+	width: auto;
+	padding-top: 34px;
+}	
+
+#banner a{
+	float: right;
+}
+
+#wrapper{
+	clear: both;
+}	
+
+div.break{
+	clear: both;
+	margin-bottom: 30px;
+}
+
+#right-column{
+	padding-top: 22px;
+}
+
+label{
+	color: #555555;
+	display: block;
+	font-size: 26px;
+}
+
+label span.small{
+	font-size: 16px;
+	padding-left: 10px;
+}
+
+input[type=text], input[type=password], select, option{
+	font-size: 26px;
+	width: 100%;
+	color: #222222;
+}
+
+input[type=submit]{
+	font-size: 26px;
+	float: right;
+	padding: 5px 10px;
+	background: #1f85da;
+	color: #FFFFFF;
+	border: none;
+}
+
+form p{
+	margin-bottom: 25px;
+}
