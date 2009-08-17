@@ -92,3 +92,21 @@ function toggleClientInfo( id ){
 		$( 'client-info-' + id ).style.display = 'block';
 	}
 }
+
+function showViewOptions(){
+	$( 'view-options' ).style.display = 'block';
+	$( 'show-view-options' ).style.display = 'none';
+}
+
+function hideViewOptions(){
+	$( 'view-options' ).style.display = 'none';
+	$( 'show-view-options' ).style.display = 'block';
+}
+
+function setClientCheckboxes( v ){
+	var boxes = $$( '.client-checkbox' );
+	
+	for( var i = 0; i < boxes.length; i++ ){
+		boxes[i].checked = v;
+	}
+}

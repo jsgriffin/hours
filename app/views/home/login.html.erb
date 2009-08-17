@@ -1,12 +1,23 @@
-<% if flash[:notice] %>
-	<div style="font-family:'Trebuchet MS'; color:#FF0000; font-size:14px;"><%= flash[:notice] %></div>
-<% end %>
- 
-<!--creates form, exectues the authenticate method when the submit button is clicked-->
-<%= form_tag :action=>'authenticate' %>
-Email address:
-<%= text_field("userform", "email",:size=>"20" ) %>
-Password:
-<%= password_field("userform", "password",:size=>"20" ) %>
-<input type="submit" value=" LOGIN " />
-</form>
+<h1>Login</h1>
+
+<div id="right-column">
+	<p class="blurb">Forgotten your password?<br />
+	Not a problem! Click here and we'll send you a new one.
+	</p>
+</div>
+
+<div id="left-column">
+	<%= form_tag :action=>'authenticate' %>
+		<p>
+			<label>Email Address</label>
+			<%= text_field("userform", "email",:size=>"20" ) %>
+		</p>
+		<p>
+			<label>Password</label>
+			<%= password_field("userform", "password",:size=>"20" ) %>
+		</p>
+		<p>
+			<input type="submit" value="Login" />
+		</p>
+	</form>
+</div>

@@ -52,7 +52,7 @@ class UsersController < ApplicationController
 	
 	if @existing.size > 0
 		flash[:notice] = "Someone with that email address is already registered. Please choose another email address, <a href=\"/login\">Login</a> or <a href=\"/users/forgotten\">reset your password</a>." 
-		render :action=>"new"
+		redirect_to "/signup"
 		return false
 	end	
 	

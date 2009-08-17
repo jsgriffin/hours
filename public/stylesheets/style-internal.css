@@ -1,5 +1,6 @@
 h1.client{
 	margin-bottom: 10px;
+	margin-top: 5px;
 }
 
 h1 span.small{
@@ -29,7 +30,7 @@ span.edit-link a{
 div.entry-wrapper span.edit-link{
 	float: right;
 	padding-top: 1px;
-	margin-right: 10px;
+	margin-right: 25px;
 	display: none;
 }
 
@@ -39,7 +40,9 @@ span.small{
 }
 
 div.client{
-	margin-bottom: 40px;
+	margin-bottom: 10px;
+	width: 480px;
+	padding: 10px;
 }
 
 div.client div.inner{
@@ -114,9 +117,9 @@ span.expense_submit{
 
 #timer{
 	float: right;
-	width: 421px;
-	height: 71px;
-	background: url( '/images/timer_bg.png' ) no-repeat;
+	width: 419px;
+	height: 66px;
+	background: url( '/images/timer-bg.jpg' ) no-repeat;
 	margin-top: 10px;
 }
 
@@ -145,7 +148,8 @@ span.expense_submit{
 
 #totals{
 	float: right;
-	width: 300px;
+	width: 220px;
+	padding: 10px;
 }
 
 #totals h2{
@@ -155,7 +159,6 @@ span.expense_submit{
 #totals h3{
 	font-weight: normal;
 	border-bottom: 1px solid #999999;
-	width: 200px;
 }
 
 p.interval-date{
@@ -175,7 +178,6 @@ div.total p{
 	font-style: italic;
 	font-size: 12px;
 	color: #555555;
-	width: 200px;
 	clear: right;
 	margin: 0px;
 }
@@ -246,10 +248,26 @@ div.edit-client{
 }
 
 div.user-controls{
-	background: #232323;
-	width: 200px;
+	background: #363636;
+	width: 100%;
 	clear: both;
 	margin-top: 20px;
+}
+
+.corner-tr{
+	background: url(/images/corner-tr.jpg) top right no-repeat;
+}
+
+.corner-tl{
+	background: url(/images/corner-tl.jpg) top left no-repeat;
+}
+
+.corner-br{
+	background: url(/images/corner-br.jpg) bottom right no-repeat;
+}
+
+.corner-bl{
+	background: url(/images/corner-bl.jpg) bottom left no-repeat;
 }
 
 div.user-controls .inner{
@@ -287,10 +305,14 @@ div.user-controls a:hover{
 
 div.view-options{
 	background: #424242;
-	padding: 20px;
 	position: relative;
-	height: 200px;
 	margin-bottom: 40px;
+	display: none;
+}
+
+div.view-options .inner{
+	padding: 20px;
+	height: 200px;
 }
 
 div.view-options h2{
@@ -312,7 +334,7 @@ div.view-options h3{
 div.view-options .client-list-wrapper{
 	width: 240px;
 	float: left;
-	margin-right: 50px;
+	margin-right: 100px;
 }
 
 div.view-options .client-list{
@@ -328,8 +350,18 @@ div.view-options .client-list p{
 	font-size: 12px;
 }
 
-div.view-options .client-list p.odd{
+.odd-row{
 	background: #FFFFFF;
+}
+
+#clients .odd-row{
+	border-top: 1px solid #A9A9A9;
+	border-bottom: 1px solid #A9A9A9;
+	background: #FAFAFA;
+}
+
+.even-row{
+	background: #F6F6F6;
 }
 
 div.view-options .client-list-wrapper p.small{
@@ -338,7 +370,8 @@ div.view-options .client-list-wrapper p.small{
 	text-align: right;
 }
 
-div.view-options .client-list-wrapper p.small a{
+div.view-options .client-list-wrapper p.small a, div.submit-wrapper a{
+	font-size: 10px;
 	color: #7db5ff;
 	text-decoration: none;
 }
@@ -348,7 +381,7 @@ div.view-options .dates-wrapper{
 	width: 240px;
 	color: #B8B8B8;
 	font-size: 12px;
-	margin-right: 20px;
+	margin-right: 70px;
 }
 
 div.view-options form{
@@ -367,4 +400,14 @@ div.submit-wrapper input{
 	font-size: 18px;
 	padding: 4px 10px;
 	margin-top: -10px;
+}
+
+#show-view-options{
+	text-align: right;
+}
+
+#show-view-options a{
+	font-size: 12px;
+	color: #d92929;
+	text-decoration: none;
 }

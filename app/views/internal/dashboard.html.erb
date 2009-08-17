@@ -1,42 +1,59 @@
-<div class="view-options">
-	<h2>View Options</h2>
+<div id="show-view-options">
+	<%= link_to_function "+ Show view options", "showViewOptions()" %>
+</div>
+
+<div class="view-options" id="view-options">
+	<div class="corner-tr">
+	<div class="corner-tl">
+	<div class="corner-br">
+	<div class="corner-bl">
 	
-	<%= form_tag :action=>'dashboard' %>
-	<div class="client-list-wrapper">
-		<h3>Show these clients...</h3>
-		<div class="client-list">	
-			<% count = 0 %>
-			<% for client in @clients %>
-				<p class="<% if count % 2 == 0 %>even<% else %>odd<% end %>"><input type="checkbox" name="options[client][<%= client.id %>]" /> <label for="options[client][<%= client.id %>]"><%= client.name %></label></p>
-				<% count = count + 1 %>
-			<% end %>
+	<div class="inner">
+		<h2>View Options</h2>
+		
+		<%= form_tag :action=>'dashboard' %>
+		<div class="client-list-wrapper">
+			<h3>Show these clients...</h3>
+			<div class="client-list">	
+				<% count = 0 %>
+				<% for client in @all_clients %>
+					<p class="<%= cycle( '', 'odd-row' ) %>"><input type="checkbox" class="client-checkbox" name="options[clients][<%= client.id %>]" /> <label for="options[clients][<%= client.id %>]"><%= client.name %></label></p>
+					<% count = count + 1 %>
+				<% end %>
+			</div>
+			<p class="small"><%= link_to_function 'Select All', "setClientCheckboxes( true )" %> | <%= link_to_function 'Select None', "setClientCheckboxes( false )" %></p>
 		</div>
-		<p class="small"><a href="">Select All</a> | <a href="">Select None</a></p>
-	</div>
-		
-	<div class="dates-wrapper">
-		<h3>...between these dates</h3>
-		
-		<div class="dates">
-		<p><%= date_select( "options", "interval_start", :order=>[:day, :month, :year] ) %></p>
-		<p>until</p>
-		<p><%= date_select( "options", "interval_end", :order=>[:day, :month, :year] ) %></p>
+			
+		<div class="dates-wrapper">
+			<h3>...between these dates</h3>
+			
+			<div class="dates">
+			<p><%= date_select( "options", "interval_start", :order=>[:day, :month, :year] ) %></p>
+			<p>until</p>
+			<p><%= date_select( "options", "interval_end", :order=>[:day, :month, :year] ) %></p>
+			</div>
+			
 		</div>
 		
+		<div class="submit-wrapper">
+			<p><input type="submit" value="Search" /></p>
+			<p><%= link_to_function "Hide view options", "hideViewOptions()" %></p>
+		</div>
+		
+		</form>
 	</div>
 	
-	<div class="submit-wrapper">
-		<input type="submit" value="Search" />
 	</div>
-	
-	</form>
-	
+	</div>
+	</div>
+	</div>	
 </div>
 
 <%= render :partial=>"right_column", :locals=>{:clients=>@clients, :time_format=>@time_format, :user=>@user} %>
 
+<div id="clients">
 <% for client in @clients %>
-	<div class="client">
+	<div class="client<%= cycle('', ' odd-row', :name=>'client_backgrounds') %>">
 		<h1 class="client" id="client-header-<%= client.id %>">
 			<%= client.name %> 
 			<span class="small">&pound;<%= '%.2f' % client.rate %>/hr</span> 
@@ -86,6 +103,7 @@
 		</div>
 	</div>
 <% end %>
+</div>
 
 <% if @limit_reached %>
 <p class="limit-reached">Your client limit has been reached. <a href="/upgrade">Upgrade your account</a> to add more clients.</p>

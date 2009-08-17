@@ -27,7 +27,7 @@ class HomeController < ApplicationController
   end
 
   def signup
-	@user = User.new
+		@user = User.new
   end	
 
 end
