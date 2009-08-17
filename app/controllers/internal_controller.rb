@@ -41,8 +41,8 @@ class InternalController < ApplicationController
 			@mixed = Array.new
 
 			if !(@start && @end)
-				@start = Date.now
-				@end = 1.month.ago
+				@start = 1.month.ago
+				@end = Time.now
 			end
 			
 			@intervals = @clients[i].intervals.find( :all, :conditions=>[ "start >= ? AND end <= ?", @start, @end ] )

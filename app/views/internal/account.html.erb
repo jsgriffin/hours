@@ -1,4 +1,10 @@
-<h1>My account</h1>
+<h1>My account <span class="small"><a href="/dashboard">Back to Dashboard</a></span></h1>
+
+<div id="right-column">
+	<p class="blurb">Upgrade your account now!!!!!!!</p>
+</div>
+
+<div id="left-column">
 
 <% form_for(@user) do |f| %>
   <%= f.error_messages %>
@@ -23,3 +29,5 @@
     <%= f.submit 'Update' %>
   </p>
 <% end %>
+
+</div>

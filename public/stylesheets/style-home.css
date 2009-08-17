@@ -1,16 +1,6 @@
 #banner{
 }
 
-#right-column{
-	width: 259px;
-	float: right;
-	margin-left: 40px;
-}
-
-#left-column{
-	width: 530px;
-}
-
 #home-left-column{
 	width: 200px;
 	text-align: right;
@@ -62,13 +52,6 @@
 	text-decoration: none;
 }
 
-h1{
-	font-weight: normal;
-	font-size: 40px;
-	width: 100%;
-	margin-bottom: 40px;
-}
-
 p.blurb{
 	font-size: 16px;
 	line-height: 22px;
@@ -86,36 +69,6 @@ span.asterisk{
 	font-size: 20px;
 	margin-left: -8px;
 	color: #777777;
-}
-
-label{
-	color: #555555;
-	display: block;
-	font-size: 26px;
-}
-
-label span.small{
-	font-size: 16px;
-	padding-left: 10px;
-}
-
-#left-column input[type=text], #left-column input[type=password], #left-column select, #left-column option{
-	font-size: 26px;
-	width: 100%;
-	color: #222222;
-}
-
-#left-column input[type=submit]{
-	font-size: 26px;
-	float: right;
-	padding: 5px 10px;
-	background: #1f85da;
-	color: #FFFFFF;
-	border: none;
-}
-
-#left-column form p{
-	margin-bottom: 25px;
 }
 
 #user-bar{

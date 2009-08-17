@@ -93,14 +93,14 @@ function toggleClientInfo( id ){
 	}
 }
 
-function showViewOptions(){
-	$( 'view-options' ).style.display = 'block';
-	$( 'show-view-options' ).style.display = 'none';
-}
-
-function hideViewOptions(){
-	$( 'view-options' ).style.display = 'none';
-	$( 'show-view-options' ).style.display = 'block';
+function toggleViewOptions(){
+	if( $( 'view-options' ).style.display != 'block' ){
+		$( 'view-options' ).style.display = 'block';
+		$( 'show-view-options-link' ).innerHTML = '- Hide view options';
+	}else{
+		$( 'view-options' ).style.display = 'none';
+		$( 'show-view-options-link' ).innerHTML = '+ Show view options';
+	}
 }
 
 function setClientCheckboxes( v ){

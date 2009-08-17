@@ -1,5 +1,6 @@
 <div id="show-view-options">
-	<%= link_to_function "+ Show view options", "showViewOptions()" %>
+	Welcome, <%= @user.name %>
+	<%= link_to_function "+ Show view options", "toggleViewOptions()", :id=>"show-view-options-link" %>
 </div>
 
 <div class="view-options" id="view-options">
@@ -40,7 +41,6 @@
 		
 		<div class="submit-wrapper">
 			<p><input type="submit" value="Search" /></p>
-			<p><%= link_to_function "Hide view options", "hideViewOptions()" %></p>
 		</div>
 		
 		</form>
