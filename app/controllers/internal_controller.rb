@@ -12,7 +12,14 @@ class InternalController < ApplicationController
 	  			@chosen_clients.push client[0]
   			end
   		end
-  		@clients = Client.find( :all, :conditions=>["user_id = ? AND id IN (#{@chosen_clients.join(',')})", session[:user_id] ] )
+  		@clients = Client.find( :all, :conditions=>["user_id = ? AND id IN (#{@chosen_clients.join(',')})", session[:user_id] ], :order=>'name' )
+  		
+  		@start = Date.civil(params[:options][:"interval_start(1i)"].to_i,
+  												params[:options][:"interval_start(2i)"].to_i,
+  												params[:options][:"interval_start(3i)"].to_i)
+  		@end = Date.civil(params[:options][:"interval_end(1i)"].to_i,
+  											params[:options][:"interval_end(2i)"].to_i,
+  											params[:options][:"interval_end(3i)"].to_i)
   	else
 	  	@clients = Client.find( :all, :conditions=>["user_id = ?", session[:user_id] ], :order=>'name' )
 		end
@@ -32,8 +39,16 @@ class InternalController < ApplicationController
 	
 		for i in 0...@clients.length
 			@mixed = Array.new
+
+			if !(@start && @end)
+				@start = Date.now
+				@end = 1.month.ago
+			end
 			
-			for interval in @clients[i].intervals
+			@intervals = @clients[i].intervals.find( :all, :conditions=>[ "start >= ? AND end <= ?", @start, @end ] )
+			@expenses = @clients[i].expenses.find( :all, :conditions=>[ "created_at >= ? AND created_at <= ?", @start, @end ] )
+
+			for interval in @intervals
 				@entry = InvoiceEntry.new
 				@entry.is_expense = false
 				@entry.interval = interval
@@ -41,7 +56,7 @@ class InternalController < ApplicationController
 				@mixed.push( @entry )
 			end
 			
-			for expense in @clients[i].expenses
+			for expense in @expenses
 				@entry = InvoiceEntry.new
 				@entry.is_expense = true
 				@entry.expense = expense

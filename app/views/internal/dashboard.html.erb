@@ -17,7 +17,10 @@
 			<div class="client-list">	
 				<% count = 0 %>
 				<% for client in @all_clients %>
-					<p class="<%= cycle( '', 'odd-row' ) %>"><input type="checkbox" class="client-checkbox" name="options[clients][<%= client.id %>]" /> <label for="options[clients][<%= client.id %>]"><%= client.name %></label></p>
+					<p class="<%= cycle( '', 'odd-row' ) %>">
+						<input type="checkbox" class="client-checkbox" name="options[clients][<%= client.id %>]" <%= (@clients.include?(client)) ? 'checked="checked"' : '' %> /> 
+						<label for="options[clients][<%= client.id %>]"><%= client.name %></label>
+					</p>
 					<% count = count + 1 %>
 				<% end %>
 			</div>
@@ -28,9 +31,9 @@
 			<h3>...between these dates</h3>
 			
 			<div class="dates">
-			<p><%= date_select( "options", "interval_start", :order=>[:day, :month, :year] ) %></p>
+			<p><%= date_select( :options, :interval_start, :order=>[:day, :month, :year], :default => @start ) %></p>
 			<p>until</p>
-			<p><%= date_select( "options", "interval_end", :order=>[:day, :month, :year] ) %></p>
+			<p><%= date_select( :options, :interval_end, :order=>[:day, :month, :year], :default => @end ) %></p>
 			</div>
 			
 		</div>
