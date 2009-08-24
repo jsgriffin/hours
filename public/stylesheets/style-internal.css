@@ -120,7 +120,6 @@ span.expense_submit{
 	width: 419px;
 	height: 66px;
 	background: url( '/images/timer-bg.jpg' ) no-repeat;
-	margin-top: 10px;
 }
 
 #timer .inner{
@@ -163,11 +162,12 @@ span.expense_submit{
 }
 
 p.interval-date{
-	color: #555555;
-	font-style: italic;
-	margin-left: -10px;
-	margin-top: 4px;
+	color: #666666;
+	/*font-style: italic;*/
+	margin-left: -15px;
+	margin-top: 8px;
 	margin-bottom: 0px;
+	font-size: 14px;
 }
 
 span.open-interval{
@@ -176,22 +176,22 @@ span.open-interval{
 }
 
 div.total p{
-	font-style: italic;
+	/*font-style: italic;*/
 	font-size: 12px;
-	color: #555555;
+	color: #666666;
 	clear: right;
 	margin: 0px;
 }
 
 div.total span.total-time, div.total span.total-amount{
 	font-size: 18px;
-	font-weight: bold;
 	font-style: normal;
 	float: right;
+	color: #444444;
 }
 
-span.grand-total{
-	color: #232323;
+div.total span.grand-total{
+	color: #111111;
 }
 
 p.expense-form{

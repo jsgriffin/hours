@@ -24,7 +24,12 @@
     <%= f.password_field :password, :value=>"" %><br />
     <input type="password" name="password_2" value="" />
   </p>
-  
+	
+	<p>
+	 	<label>Timezone</label>
+	 	<%= f.time_zone_select :timezone, ActiveSupport::TimeZone.us_zones %>
+	</p>
+	    
   <p>
     <%= f.submit 'Update' %>
   </p>

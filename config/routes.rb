@@ -1,14 +1,4 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :feedbacks
-
-  map.resources :intervals
-
-  map.resources :expenses
-
-  map.resources :clients
-
-  map.resources :users
-
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:
@@ -51,6 +41,8 @@ ActionController::Routing::Routes.draw do |map|
   
   map.root :controller => "home"
   
+  map.resources :home
+  
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
   
@@ -62,4 +54,10 @@ ActionController::Routing::Routes.draw do |map|
   map.connect 'dashboard/', :controller=>'internal', :action=>'dashboard'
   map.connect 'account/', :controller=>'internal', :action=>'account'
   map.connect 'signup/', :controller=>'home', :action=>'signup'
+
+  map.resources :feedbacks
+  map.resources :intervals
+  map.resources :expenses
+  map.resources :clients
+  map.resources :users
 end
