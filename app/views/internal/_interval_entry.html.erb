@@ -1,9 +1,14 @@
 <div class="entry-wrapper" id="interval-<%= interval.id %>">
 	<span class="edit-link">
-		<a href="javascript:showEditIntervalForm( <%= interval.id %> )"><img src="/images/edit-icon.png" alt="edit" title="edit" /></a> 
-		<a href="javascript:confirmDelete( 'interval', '/intervals/destroy/<%= interval.id %>' )"><img src="/images/delete-icon.png" alt="delete" title="delete" /></a>
-		<a href="javascript:showEntryControlsHelp()"><img src="/images/help-icon.png" alt="help" title="help" /></a>
+		<a class="cog" id="client-options-link-<%= client.id %>-i-<%= interval.id %>" href="#" onclick="showOptions( '<%= client.id %>-i-<%= interval.id %>' )"><img src="/images/cog-normal.png" alt="Options" title="Options" /></a>
 	</span>
+	<div class="options" id="client-options-<%= client.id %>-i-<%= interval.id %>">
+		<ul>
+			<li><a href="javascript:showEditIntervalForm( <%= interval.id %> )">Edit</a></li>
+			<li><a href="javascript:confirmDelete( 'interval', '/intervals/destroy/<%= interval.id %>' )">Delete</a></li>
+			<li><a href="javascript:showEntryControlsHelp()">Help</a></li>
+		</ul>	
+	</div>
 	<p class="entry">
 		<% if interval.end %>
 			<%= time_diff( interval.start, interval.end ).strftime( time_format ) %> 

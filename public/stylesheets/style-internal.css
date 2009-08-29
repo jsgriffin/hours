@@ -1,3 +1,7 @@
+h1{
+	position: relative;
+}
+
 h1.client{
 	margin-bottom: 10px;
 	margin-top: 5px;
@@ -15,11 +19,8 @@ h1 span.edit-link{
 
 span.edit-link{
 	font-size: 12px;
-	background: #FFFFFF;
-	padding: 4px;
 	position: absolute;
 	right: 0px;
-	border: 1px solid #A9A9A9;
 }
 
 span.edit-link a{
@@ -29,8 +30,7 @@ span.edit-link a{
 
 div.entry-wrapper span.edit-link{
 	float: right;
-	padding-top: 1px;
-	margin-right: 25px;
+	margin-top: -1px;
 	display: none;
 }
 
@@ -419,5 +419,57 @@ div.submit-wrapper input{
 	float: right;
 	font-size: 12px;
 	color: #d92929;
+	text-decoration: none;
+}
+
+a.cog{
+	display: block;
+	width: 38px;
+	height: 25px;
+}
+
+a.cog:hover, a.selected{
+	background: url(/images/cog-over-bg.png) top left no-repeat;
+}
+
+div.options{
+	font-size: 14px;
+	position: absolute;
+	right: 0px;
+	background: #FFFFFF;
+	border: 1px solid #999999;
+	z-index: 9999999;
+	display: none;
+}
+
+h1 div.options{
+	top: 25px;
+}
+
+div.entry-wrapper div.options{
+	top: 20px;
+}
+
+div.options ul{
+	list-style-type: none;
+	padding: 0px;
+	margin: 0px;
+}
+
+div.options ul li{
+	padding: 4px;
+	margin: 0px;
+}
+
+div.options ul li:hover{
+	background: #999999;
+}
+
+div.options ul li:hover a{
+	color: #FFFFFF;
+}
+
+div.options a{
+	color: #222222;
 	text-decoration: none;
 }

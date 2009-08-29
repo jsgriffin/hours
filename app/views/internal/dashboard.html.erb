@@ -61,14 +61,20 @@
 			<%= client.name %> 
 			<span class="small">&pound;<%= '%.2f' % client.rate %>/hr</span> 
 			<span class="edit-link">
-				<a href="javascript:showExpenseForm( <%= client.id %> )"><img src="/images/add-expense-icon.png" alt="add an expense" title="add expense" /></a> 
-				<a href="javascript:showEditClientForm( <%= client.id %> )"><img src="/images/edit-icon.png" alt="edit" title="edit" /></a> 
-				<a href="javascript:confirmDelete( 'client', '/clients/destroy/<%= client.id %>' )"><img src="/images/delete-icon.png" alt="delete" title="delete" /></a>
-				<% if !@limit_reached %>
-				<a href="javascript:showClientForm()"><img src="/images/add-client-icon.png" alt="add a client" title="add a client" /></a> 
-				<% end %>
-				<a href="javascript:showClientControlsHelp()"><img src="/images/help-icon.png" alt="help" title="help" /></a>
+				<a class="cog" id="client-options-link-<%= client.id %>" href="#" onclick="showOptions(<%= client.id %>)"><img src="/images/cog-normal.png" alt="Options" title="Options" /></a>
 			</span>
+			
+			<div class="options" id="client-options-<%= client.id %>">
+				<ul>
+					<li><a href="javascript:showExpenseForm( <%= client.id %> )">Add an Expense</a></li>
+					<li><a href="javascript:showEditClientForm( <%= client.id %> )">Edit Client</a></li> 
+					<li><a href="javascript:confirmDelete( 'client', '/clients/destroy/<%= client.id %>' )">Delete Client</a></li>
+					<% if !@limit_reached %>
+					<li><a href="javascript:showClientForm()">Add a new Client</a></li>
+					<% end %>
+					<li><a href="javascript:showClientControlsHelp()">Help</a></li>
+				</ul>
+			</div>
 		</h1>
 		
 		<div class="edit-client" id="client-edit-<%= client.id %>">
@@ -85,7 +91,7 @@
 					<% @current_date = item.date.strftime( @date_format ) %>
 				<% end %>
 				<% if item.is_expense %>
-					<%= render :partial=>"expense_entry", :locals=>{:expense=>item.expense} %>
+					<%= render :partial=>"expense_entry", :locals=>{:expense=>item.expense, :client=>client} %>
 				<% else %>
 					<%= render :partial=>"interval_entry", :locals=>{:interval=>item.interval, :client=>client} %>
 				<% end %>

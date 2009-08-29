@@ -44,14 +44,12 @@ class FeedbacksController < ApplicationController
   	@feedback = @user.feedbacks.build( params[:feedback] )
 
     if @feedback.save
-    	MailSystem::deliver_mail( @user, params[:feedback][:message] )
-    
-        flash[:notice] = 'Thanks for your feedback!'
-        redirect_to "/dashboard"
+    	MailSystem::deliver_mail( @user, params[:feedback][:message] )   
+      flash[:notice] = 'Thanks for your feedback!'
     else
     	flash[:notice] = 'Your feedback could not be sent, please try again'
-    	render :action=>"submit"
     end
+    redirect_to "/dashboard"    
   end
 
   # PUT /feedbacks/1

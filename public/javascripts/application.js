@@ -54,6 +54,13 @@ function confirmDelete( entity, url ){
 window.onload = init;
 
 function init(){
+	$$( '*' ).each( function(e){
+		if( !e.hasClassName('cog' ) ){
+			console.log( e );
+			e.onmousedown = hideOptions;
+		}
+	});
+	
 	var clients = $$( 'h1.client' );
 	
 	for( var i = 0; i < clients.length; i++ ){
@@ -67,6 +74,12 @@ function init(){
 		entries[i].onmouseover = showEditControls;
 		entries[i].onmouseout = hideEditControls;
 	}	
+	
+	var option_links = $$( 'div.options a' );
+	
+	for( var i = 0; i < option_links.length; i++ ){
+		option_links[i].onclick = hideOptions;
+	}
 }
 
 function showEditControls( e ){	
@@ -109,4 +122,21 @@ function setClientCheckboxes( v ){
 	for( var i = 0; i < boxes.length; i++ ){
 		boxes[i].checked = v;
 	}
+}
+
+function showOptions( id ){
+	hideOptions();
+	$( 'client-options-' + id ).style.display = 'block';
+	$( 'client-options-link-' + id ).addClassName( 'selected' );
+	return false;
+}
+
+function hideOptions(){
+	$$( 'div.options' ).each( function(d){
+		d.style.display = 'none';
+	})
+	
+	$$( 'a.cog' ).each( function(l){
+		l.removeClassName( 'selected' );
+	})
 }

@@ -1,9 +1,14 @@
 <div class="entry-wrapper" id="expense-<%= expense.id %>">
 	<span class="edit-link">
-		<a href="javascript:showEditExpenseForm( <%= expense.id %> )"><img src="/images/edit-icon.png" alt="edit" title="edit" /></a> 
-		<a href="javascript:confirmDelete( 'expense', '/expenses/destroy/<%= expense.id %>' )"><img src="/images/delete-icon.png" alt="delete" title="delete" /></a>
-		<a href="javascript:showEntryControlsHelp()"><img src="/images/help-icon.png" alt="help" title="help" /></a>
+		<a class="cog" id="client-options-link-<%= client.id %>-e-<%= expense.id %>" href="#" onclick="showOptions( '<%= client.id %>-e-<%= expense.id %>' )"><img src="/images/cog-normal.png" alt="Options" title="Options" /></a>
 	</span>
+	<div class="options" id="client-options-<%= client.id %>-e-<%= expense.id %>">
+		<ul>
+			<li><a href="javascript:showEditExpenseForm( <%= expense.id %> )">Edit</a></li>
+			<li><a href="javascript:confirmDelete( 'expense', '/expenses/destroy/<%= expense.id %>' )">Delete</a></li>
+			<li><a href="javascript:showEntryControlsHelp()">Help</a></li>
+		</ul>	
+	</div>
 	<p class="entry"><%= expense.description %> <span class="value">&pound;<%= '%.2f' % expense.amount %></span></p>
 </div>
 
