@@ -1,5 +1,11 @@
 <div id="show-view-options">
-	Welcome, <%= @user.name %>
+	Welcome, <%= @user.name %> - 
+		<%= link_to "Dashboard", dashboard_url %> /
+		<%= link_to "Clients", clients_url %> / 
+		<a href="">Invoices</a> / 
+		<%= link_to "Your Account", account_url %> / 
+		<%= link_to "Logout" , logout_url %> / 
+		<%= link_to "Submit Feedback", submit_feedbacks_url %>
 	<%= link_to_function "+ Show view options", "toggleViewOptions()", :id=>"show-view-options-link" %>
 </div>
 

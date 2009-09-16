@@ -415,9 +415,11 @@ div.submit-wrapper input{
 	margin-bottom: 10px;
 }
 
-#show-view-options a{
+#show-view-options-link{
 	float: right;
-	font-size: 12px;
+}
+
+#show-view-options a{
 	color: #d92929;
 	text-decoration: none;
 }
@@ -433,43 +435,18 @@ a.cog:hover, a.selected{
 }
 
 div.options{
-	font-size: 14px;
-	position: absolute;
-	right: 0px;
-	background: #FFFFFF;
-	border: 1px solid #999999;
-	z-index: 9999999;
 	display: none;
-}
-
-h1 div.options{
-	top: 25px;
-}
-
-div.entry-wrapper div.options{
-	top: 20px;
+	font-size: 14px;
+	height: 20px;
 }
 
 div.options ul{
 	list-style-type: none;
-	padding: 0px;
 	margin: 0px;
+	padding: 0px;
 }
 
 div.options ul li{
-	padding: 4px;
-	margin: 0px;
-}
-
-div.options ul li:hover{
-	background: #999999;
-}
-
-div.options ul li:hover a{
-	color: #FFFFFF;
-}
-
-div.options a{
-	color: #222222;
-	text-decoration: none;
+	float: right;
+	margin: 0px 4px;
 }

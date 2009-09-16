@@ -54,13 +54,6 @@ function confirmDelete( entity, url ){
 window.onload = init;
 
 function init(){
-	$$( '*' ).each( function(e){
-		if( !e.hasClassName('cog' ) ){
-			console.log( e );
-			e.onmousedown = hideOptions;
-		}
-	});
-	
 	var clients = $$( 'h1.client' );
 	
 	for( var i = 0; i < clients.length; i++ ){

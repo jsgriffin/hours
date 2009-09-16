@@ -18,6 +18,7 @@
 		<p>Earned: <span class="total-amount grand-total">&pound;<%= '%.2f' % @grand_total %></span></p>
 	</div>
 	
+	<% if is_admin(@user) %>
 	<div class="user-controls">
 		<div class="corner-tr">
 		<div class="corner-tl">
@@ -27,13 +28,8 @@
 			<h3>Controls</h3>
 			
 			<ul>
-				<li><a href="/account">My account</a></li>
-				<li><a href="/feedback/submit">Submit feedback</a></li>
-				<li><a href="/logout">Logout</a></li>
-				<% if is_admin(@user) %>
 				<li><a href="/users">Manage users</a></li>
 				<li><a href="/feedback">View feedback</a></li>
-				<% end %>
 			</ul>
 		</div>		
 		</div>
@@ -41,5 +37,6 @@
 		</div>
 		</div>
 	</div>
+	<% end %>
 	
 </div>

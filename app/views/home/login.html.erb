@@ -7,7 +7,7 @@
 </div>
 
 <div id="left-column">
-	<%= form_tag :action=>'authenticate' %>
+	<%= form_tag authenticate_url %>
 		<p>
 			<label>Email Address</label>
 			<%= text_field("userform", "email",:size=>"20" ) %>
